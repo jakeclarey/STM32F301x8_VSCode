@@ -1,0 +1,15 @@
+{
+    "project_name": "Blinky",
+    "files.associations": {
+        "stm32f446xx.h": "c",
+        "core_cm4.h": "c",
+        "system_stm32f4xx.h": "c",
+        "cmsis_version.h": "c",
+        "mpu_armv7.h": "c",
+        "cmsis_compiler.h": "c",
+        "blink.h": "c",
+        "stm32f301x8.h": "c"
+    },
+    "cortex-debug.variableUseNaturalFormat": true,
+    "C_Cpp.default.compilerPath": "C:/ProgramData/chocolatey/lib/gcc-arm-embedded/tools/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc.exe",
+}

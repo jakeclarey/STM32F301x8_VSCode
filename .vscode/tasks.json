@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build all",
+            "group": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "all",
+                "FN=${config:project_name}",
+                "-j4"
+            ],
+            "dependsOn": "Build clean"
+        },
+        {
+            "label": "Build clean",
+            "group": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "FN=${config:project_name}",
+                "clean"
+            ]
+        },
+        {
+            "label": "Flash controller",
+            "group": "build",
+            "type": "shell",
+            "command": "st-flash",
+            "args": [
+                //"--connect-under-reset",
+                "--reset",
+                "write",
+                "!build/main.bin",
+                "0x08000000"
+            ],
+            "dependsOn": "Build all",
+        }
+    ]
+}

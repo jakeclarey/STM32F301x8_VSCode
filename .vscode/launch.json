@@ -1,0 +1,20 @@
+// Configure debug launch settings
+{
+    "version": "0.2.0",
+    "projectName": "${workspaceFolderBasename}",
+    "configurations": [
+        {
+            "name": "STLink debug",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/!build/main.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "STM32F446RE",
+            "interface": "swd",
+            "preLaunchTask": "Build all",
+            "svdFile": "${workspaceFolder}/!DeviceSpecific/SVDFile/STM32F301.svd",
+            "runToEntryPoint": "enabled",
+        }
+    ]
+}
