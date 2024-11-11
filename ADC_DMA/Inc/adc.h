@@ -19,12 +19,17 @@
 #define ADC_IN11_GPIO GPIOB
 #define ADC_IN11_PIN  0
 
+extern uint8_t *adcTxData;
+extern uint16_t adcData[5];
+
 void ADC_Init(void);
 void ADC_Enable(void);
 void ADC_Start(void);
 void DMA_Init(void);
 void DMA_Config(uint32_t srcAdd, uint32_t destAdd, uint16_t size);
 
-#endif  // __ADC_H__
+extern void DMA1_Channel1_IRQHandler(void);
+
+#endif // __ADC_H__
 
 /* EOF */

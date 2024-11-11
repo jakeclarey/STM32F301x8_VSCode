@@ -13,8 +13,9 @@
 #include "adc.h"
 #include "i2c.h"
 
-uint16_t adcRxData[5]; // ADC codes. Ch1-4 are [0-3] and [4] is internal temp sensor ADC code
-float temperatureC;    // temperature value in degrees Celsius
+uint16_t adcData[5]; // ADC codes. Ch1-4 are [0-3] and [4] is internal temp sensor ADC code
+
+float temperatureC; // temperature value in degrees Celsius
 
 int main(void)
 {
@@ -26,7 +27,7 @@ int main(void)
     ADC_Enable();
 
     DMA_Init();
-    DMA_Config((uint32_t)&ADC1->DR, (uint32_t)adcRxData, 5); // ADC data register to memory via DMA. 5 values.
+    DMA_Config((uint32_t)&ADC1->DR, (uint32_t)adcData, 5); // ADC data register to memory via DMA. 5 values.
 
     ADC_Start();
 
@@ -35,7 +36,7 @@ int main(void)
     {
         // uint8_t *rxData8Bit = (uint8_t *)adcRxData; // variable for test if typecast array will work in transmit.
         // temperatureC = (((float)(3.3 * adcRxData[4] / (float)4095) - 0.76) / 0.0025) + 25; // test temp calc.
-        I2C_Slave_Transmit(I2C_BUS, (uint8_t *)adcRxData); // will transmit raw ADC codes upon request.
+        I2C_Slave_Transmit(I2C_BUS, (uint8_t *)adcTxData); // will transmit raw ADC codes upon request.
     } // while(1)
 } // main(void)
 

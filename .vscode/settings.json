@@ -1,5 +1,5 @@
 {
-    "project_name": "Blinky",
+    "project_name": "ADC_DMA",
     "files.associations": {
         "stm32f446xx.h": "c",
         "core_cm4.h": "c",
