@@ -21,8 +21,8 @@ void ADC_Init(void)
     ADC1->CFGR = ADC_CFGR_CONT;
     ADC1->CFGR &= ~ADC_CFGR_ALIGN;
 
-    ADC1->SMPR1 &= ~(ADC_SMPR1_SMP4 | ADC_SMPR1_SMP5); // sample at 3 cycles per channel
-    ADC1->SMPR2 &= ~(ADC_SMPR2_SMP10 | ADC_SMPR2_SMP11);
+    ADC1->SMPR1 |= (ADC_SMPR1_SMP4 | ADC_SMPR1_SMP5); // sample at max cycles per channel
+    ADC1->SMPR2 |= (ADC_SMPR2_SMP10 | ADC_SMPR2_SMP11);
 
     ADC1->SQR1 |= (4 << ADC_SQR1_L_Pos); // L = 4 for 5 conversion channels
 

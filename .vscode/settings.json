@@ -10,6 +10,6 @@
         "blink.h": "c",
         "stm32f301x8.h": "c"
     },
-    "cortex-debug.variableUseNaturalFormat": true,
+    "cortex-debug.variableUseNaturalFormat": false,
     "C_Cpp.default.compilerPath": "C:/ProgramData/chocolatey/lib/gcc-arm-embedded/tools/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc.exe",
 }
