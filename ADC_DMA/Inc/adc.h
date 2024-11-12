@@ -20,7 +20,7 @@
 #define ADC_IN11_PIN  0
 
 extern uint8_t *adcTxData;
-extern uint16_t adcData[5];
+extern uint16_t adcData[7400];
 
 void ADC_Init(void);
 void ADC_Enable(void);

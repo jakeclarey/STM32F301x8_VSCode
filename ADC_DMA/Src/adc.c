@@ -21,10 +21,10 @@ void ADC_Init(void)
     ADC1->CFGR = ADC_CFGR_CONT;
     ADC1->CFGR &= ~ADC_CFGR_ALIGN;
 
-    ADC1->SMPR1 |= (ADC_SMPR1_SMP4 | ADC_SMPR1_SMP5); // sample at max cycles per channel
-    ADC1->SMPR2 |= (ADC_SMPR2_SMP10 | ADC_SMPR2_SMP11);
+    ADC1->SMPR1 &= ~(ADC_SMPR1_SMP4 | ADC_SMPR1_SMP5); // sample at min cycles per channel
+    ADC1->SMPR2 &= ~(ADC_SMPR2_SMP10 | ADC_SMPR2_SMP11);
 
-    ADC1->SQR1 |= (4 << ADC_SQR1_L_Pos); // L = 4 for 5 conversion channels
+    ADC1->SQR1 |= (3 << ADC_SQR1_L_Pos); // L = 3 for 4 conversion channels
 
     ADC_IN4_GPIO->MODER |= (3U << (2 * ADC_IN4_PIN));
     ADC_IN5_GPIO->MODER |= (3U << (2 * ADC_IN5_PIN));
@@ -41,7 +41,6 @@ void ADC_Init(void)
     ADC1->SQR1 |= (5U << ADC_SQR1_SQ2_Pos);
     ADC1->SQR1 |= (10U << ADC_SQR1_SQ3_Pos);
     ADC1->SQR1 |= (11U << ADC_SQR1_SQ4_Pos);
-    ADC1->SQR2 |= (16U << ADC_SQR2_SQ5_Pos);
 }
 
 void ADC_Enable(void)

@@ -501,7 +501,7 @@ uint8_t I2C_Slave_Transmit(I2C_TypeDef *i2c, uint8_t *data)
 
     i2c->ICR |= I2C_ICR_ADDRCF;
 
-    for (uint8_t i = 0; i < txSize; i++)
+    for (uint16_t i = 0; i < txSize; i++)
     {
         while (!(i2c->ISR & (I2C_ISR_TXE)))
         {
