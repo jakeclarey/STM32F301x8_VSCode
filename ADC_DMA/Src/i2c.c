@@ -72,6 +72,14 @@ void I2C_Master_Init(I2C_TypeDef *i2c, GPIO_TypeDef *port, uint8_t sclPin, uint8
         RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
         break;
 
+    case (uint32_t)I2C2:
+        RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
+        break;
+
+    case (uint32_t)I2C3:
+        RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
+        break;
+
     default:
         return;
     }
@@ -435,6 +443,10 @@ void I2C_Slave_Init(I2C_TypeDef *i2c, GPIO_TypeDef *port, uint8_t sclPin, uint8_
 
     case (uint32_t)I2C2:
         RCC->APB1ENR |= RCC_APB1ENR_I2C2EN;
+        break;
+
+    case (uint32_t)I2C3:
+        RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
         break;
 
     default:
