@@ -70,8 +70,8 @@ void DMA_Init(void)
 void DMA_Config(uint32_t srcAdd, uint32_t destAdd, uint16_t size)
 {
     DMA1_Channel1->CNDTR = size;
-    DMA1_Channel1->CPAR  = srcAdd;
-    DMA1_Channel1->CMAR  = destAdd;
+    DMA1_Channel1->CPAR = srcAdd;
+    DMA1_Channel1->CMAR = destAdd;
 
     DMA1_Channel1->CCR |= DMA_CCR_EN;
 }

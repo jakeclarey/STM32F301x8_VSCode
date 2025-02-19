@@ -13,15 +13,7 @@
 #include "adc.h"
 #include "i2c.h"
 
-/* Channel ADC Codes stored in sequence as follows:
- *
- * Channel 1: [0], [4], [8], ...
- * Channel 2: [1], [5], [9], ...
- * Channel 3: [2], [6], [10], ...
- * Channel 4: [3], [7], [11], ...
- *
- */
-uint16_t adcData[7400];
+uint16_t adcData[4]; // channels 1-4 on custom board in order of 0-3 of array
 
 int main(void)
 {
@@ -33,7 +25,7 @@ int main(void)
     ADC_Enable();
 
     DMA_Init();
-    DMA_Config((uint32_t)&ADC1->DR, (uint32_t)adcData, 7400); // ADC data register to memory via DMA
+    DMA_Config((uint32_t)&ADC1->DR, (uint32_t)adcData, 4); // ADC data register to memory via DMA
 
     ADC_Start();
 

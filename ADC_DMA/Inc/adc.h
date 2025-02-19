@@ -10,17 +10,17 @@
 
 #include <stm32f301x8.h>
 
-#define ADC_IN4_GPIO  GPIOA
-#define ADC_IN4_PIN   3
-#define ADC_IN5_GPIO  GPIOA
-#define ADC_IN5_PIN   4
+#define ADC_IN4_GPIO GPIOA
+#define ADC_IN4_PIN 3
+#define ADC_IN5_GPIO GPIOA
+#define ADC_IN5_PIN 4
 #define ADC_IN10_GPIO GPIOA
-#define ADC_IN10_PIN  6
+#define ADC_IN10_PIN 6
 #define ADC_IN11_GPIO GPIOB
-#define ADC_IN11_PIN  0
+#define ADC_IN11_PIN 0
 
 extern uint8_t *adcTxData;
-extern uint16_t adcData[7400];
+extern uint16_t adcData[4];
 
 void ADC_Init(void);
 void ADC_Enable(void);
