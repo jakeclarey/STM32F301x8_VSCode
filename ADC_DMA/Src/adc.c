@@ -7,8 +7,7 @@
 
 #include "adc.h"
 
-uint8_t *adcTxData;
-
+/// @brief Initializes ADC to work with DMA channel 1 in circular mode.
 void ADC_Init(void)
 {
     RCC->AHBENR |= RCC_AHBENR_ADC1EN;
@@ -43,6 +42,7 @@ void ADC_Init(void)
     ADC1->SQR1 |= (11U << ADC_SQR1_SQ4_Pos);
 }
 
+/// @brief Enables the ADC after it is ready. 
 void ADC_Enable(void)
 {
     ADC1->CR |= ADC_CR_ADEN;
@@ -52,12 +52,15 @@ void ADC_Enable(void)
     }
 }
 
+/// @brief Starts the ADC reading. 
 void ADC_Start(void)
 {
     ADC1->ISR = 0;
     ADC1->CR |= ADC_CR_ADSTART;
 }
 
+/// @brief Intializes DMA Channel 1 for use with ADC in circular mode.
+/// @param  
 void DMA_Init(void)
 {
     RCC->AHBENR |= RCC_AHBENR_DMA1EN;
@@ -67,6 +70,12 @@ void DMA_Init(void)
     NVIC_EnableIRQ(DMA1_Channel1_IRQn);
 }
 
+/// @brief Configures DMA Channel 1.
+///
+/// Example: DMA_Config((uint32_t)&ADC->DR, (uint32_t)adcData, length(adcData));
+/// @param srcAdd The data location to pull from.
+/// @param destAdd The memory location of the array to place data into.
+/// @param size The length of the destination array.
 void DMA_Config(uint32_t srcAdd, uint32_t destAdd, uint16_t size)
 {
     DMA1_Channel1->CNDTR = size;
@@ -76,6 +85,7 @@ void DMA_Config(uint32_t srcAdd, uint32_t destAdd, uint16_t size)
     DMA1_Channel1->CCR |= DMA_CCR_EN;
 }
 
+/// @brief Take data from adcData and place it into transfer buffer when DMA transfer completes.
 void DMA1_Channel1_IRQHandler(void)
 {
     adcTxData = (uint8_t *)adcData;

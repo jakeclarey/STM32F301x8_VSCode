@@ -14,6 +14,7 @@
 #include "i2c.h"
 
 uint16_t adcData[4]; // channels 1-4 on custom board in order of 0-3 of array
+uint8_t *adcTxData;
 
 int main(void)
 {
